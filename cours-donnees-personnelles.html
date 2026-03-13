@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protéger mes données perso – Éco-Droit 1ère AGOrA</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-light: #EFF6FF;
+    --blue-mid: #BFDBFE;
+    --red: #DC2626;
+    --red-light: #FEF2F2;
+    --green: #16A34A;
+    --green-light: #F0FDF4;
+    --orange: #EA580C;
+    --orange-light: #FFF7ED;
+    --purple: #7C3AED;
+    --purple-light: #F5F3FF;
+    --yellow: #CA8A04;
+    --yellow-light: #FEFCE8;
+    --dark: #1E1B4B;
+    --gray: #6B7280;
+    --gray-light: #F9FAFB;
+    --white: #FFFFFF;
+    --radius: 16px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.09);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #F0F4FF;
+    color: #1E293B;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 60%, #7C3AED 100%);
+    color: white;
+    padding: 48px 24px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 46px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .hero h1 span { color: #A5F3FC; }
+  .hero p {
+    font-size: 17px;
+    opacity: .85;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+  .hero-icons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .hero-icon-pill {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── SOMMAIRE ── */
+  .nav-bar {
+    background: white;
+    padding: 16px 24px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    border-bottom: 2px solid #E2E8F0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .nav-bar a {
+    text-decoration: none;
+    background: var(--blue-light);
+    color: var(--blue);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+    transition: background .2s, color .2s;
+  }
+  .nav-bar a:hover { background: var(--blue); color: white; }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 22px 28px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 2px solid #F1F5F9;
+  }
+  .section-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .section-title p {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 600;
+  }
+  .section-body { padding: 24px 28px; }
+
+  /* ── DEFINITION BOX ── */
+  .def-box {
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    border-left: 5px solid;
+    font-size: 15px;
+  }
+  .def-box.blue { background: var(--blue-light); border-color: var(--blue); }
+  .def-box.red  { background: var(--red-light);  border-color: var(--red);  }
+  .def-box strong { font-weight: 800; }
+
+  /* ── GRID CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .card-item {
+    border-radius: 12px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid transparent;
+    transition: transform .2s, box-shadow .2s;
+    cursor: default;
+  }
+  .card-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+  .card-item .emoji { font-size: 32px; }
+  .card-item.normal { background: var(--blue-light); border-color: var(--blue-mid); color: var(--blue); }
+  .card-item.sensitive { background: var(--red-light); border-color: #FCA5A5; color: var(--red); }
+
+  /* ── ALERT BOX ── */
+  .alert {
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 18px;
+  }
+  .alert.warning { background: var(--yellow-light); border: 2px solid #FDE68A; color: #92400E; }
+  .alert.danger  { background: var(--red-light);    border: 2px solid #FCA5A5; color: var(--red);  }
+  .alert .alert-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+
+  /* ── RGPD PILLARS ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .pillar {
+    border-radius: 14px;
+    padding: 20px 16px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .pillar .big { font-size: 36px; margin-bottom: 8px; }
+  .pillar.p1 { background: #EFF6FF; color: #1E40AF; }
+  .pillar.p2 { background: #F0FDF4; color: #166534; }
+  .pillar.p3 { background: #FFF7ED; color: #9A3412; }
+  .pillar.p4 { background: #F5F3FF; color: #5B21B6; }
+
+  /* ── CNIL MISSIONS ── */
+  .missions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .mission {
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .mission .m-icon { font-size: 28px; }
+  .mission.m1 { background: #EFF6FF; color: #1E40AF; }
+  .mission.m2 { background: #F0FDF4; color: #166534; }
+  .mission.m3 { background: #FEF2F2; color: #991B1B; }
+  .mission.m4 { background: #FEFCE8; color: #854D0E; }
+
+  /* ── DROITS ── */
+  .droits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .droit-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--gray-light);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .droit-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .droit-item span.label { color: #1E293B; }
+  .droit-item span.sub { font-size: 12px; color: var(--gray); font-weight: 600; display: block; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #E2E8F0, transparent);
+    margin: 20px 0;
+  }
+
+  /* ── ACTIVITIES ── */
+  .activities-header {
+    background: linear-gradient(135deg, #1E1B4B, #2563EB);
+    color: white;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .activities-header h2 { font-size: 22px; font-weight: 900; }
+  .activities-header p { font-size: 13px; opacity: .8; }
+  .activity-block {
+    padding: 26px 28px;
+    border-bottom: 2px solid #F1F5F9;
+  }
+  .activity-block:last-child { border-bottom: none; }
+  .activity-num {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: white;
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .activity-block h3 {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  /* ── TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #E2E8F0;
+    font-size: 14px;
+  }
+  thead tr { background: var(--blue); color: white; }
+  th { padding: 12px 16px; text-align: left; font-weight: 800; font-size: 13px; }
+  td { padding: 12px 16px; border-top: 1px solid #F1F5F9; font-weight: 600; }
+  tbody tr:nth-child(even) { background: #F8FAFF; }
+  .check-cell { text-align: center; font-size: 20px; }
+
+  /* ── QUESTIONS ── */
+  .questions-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+  .question-item {
+    background: var(--gray-light);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .q-num {
+    background: var(--blue);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .question-item p { font-size: 14px; font-weight: 700; color: #1E293B; }
+  .answer-line {
+    height: 32px;
+    border-bottom: 2px dashed #CBD5E1;
+    margin-top: 8px;
+  }
+
+  /* ── CAS PRATIQUE ── */
+  .cas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .cas-item {
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .cas-item.ok   { background: var(--green-light);  color: var(--green);  border: 2px solid #86EFAC; }
+  .cas-item.nok  { background: var(--red-light);    color: var(--red);    border: 2px solid #FCA5A5; }
+  .cas-item .cas-icon { font-size: 22px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--gray);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ── FICHE MEMO ── */
+  .memo-box {
+    background: linear-gradient(135deg, #1E1B4B 0%, #4338CA 100%);
+    color: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    box-shadow: var(--shadow);
+  }
+  .memo-item { text-align: center; }
+  .memo-item .m-big { font-size: 32px; margin-bottom: 6px; }
+  .memo-item .m-title { font-size: 15px; font-weight: 900; }
+  .memo-item .m-desc { font-size: 12px; opacity: .8; margin-top: 3px; }
+
+  @media (max-width: 600px) {
+    .missions { grid-template-columns: 1fr; }
+    .cas-grid { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .pillars { grid-template-columns: 1fr 1fr; }
+    .section-body { padding: 18px; }
+    .activity-block { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">📘 Éco-Droit · 1ère AGOrA</div>
+  <h1>Protéger mes <span>données perso</span><br>sur internet</h1>
+  <p>Comprends comment tes informations sont utilisées par les entreprises… et comment tu peux te défendre !</p>
+  <div class="hero-icons">
+    <div class="hero-icon-pill">🔒 RGPD</div>
+    <div class="hero-icon-pill">🏛️ CNIL</div>
+    <div class="hero-icon-pill">⚖️ Tes droits</div>
+    <div class="hero-icon-pill">🛡️ Données sensibles</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a href="#s1">1 · Données perso</a>
+  <a href="#s2">2 · Données sensibles</a>
+  <a href="#s3">3 · Le RGPD</a>
+  <a href="#s4">4 · La CNIL</a>
+  <a href="#s5">5 · Tes droits</a>
+  <a href="#activites">✏️ Activités</a>
+</nav>
+
+<div class="container">
+
+  <!-- ── SECTION 1 ── -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EFF6FF; font-size:28px;">🪪</div>
+      <div class="section-title">
+        <h2>1. C'est quoi une donnée personnelle ?</h2>
+        <p>Toute info qui permet de t'identifier</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="def-box blue">
+        <strong>Définition :</strong> Une donnée personnelle = toute information qui permet d'identifier une personne, <em>directement ou indirectement</em>.
+      </div>
+
+      <p style="font-weight:800; font-size:15px; margin-bottom:10px;">📂 Exemples de données personnelles normales :</p>
+      <div class="cards-grid">
+        <div class="card-item normal"><span class="emoji">👤</span>Nom &amp; Prénom</div>
+        <div class="card-item normal"><span class="emoji">🏠</span>Adresse</div>
+        <div class="card-item normal"><span class="emoji">📱</span>Téléphone</div>
+        <div class="card-item normal"><span class="emoji">🎂</span>Date de naissance</div>
+        <div class="card-item normal"><span class="emoji">📧</span>E-mail</div>
+        <div class="card-item normal"><span class="emoji">💼</span>Profession</div>
+      </div>
+
+      <div class="alert warning" style="margin-top:20px;">
+        <div class="alert-icon">💡</div>
+        <div>Ces informations peuvent être <strong>enregistrées dans un fichier clients</strong> d'une entreprise (ex : Amazon, Fnac, Nike…). C'est pour ça qu'elles doivent être protégées !</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2 ── -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FEF2F2;">🔴</div>
+      <div class="section-title">
+        <h2>2. Les données sensibles</h2>
+        <p>Celles qui touchent à ta vie privée profonde</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <p style="font-weight:700; margin-bottom:14px;">Certaines données sont <strong>encore plus protégées</strong> car elles concernent des aspects très personnels de ta vie :</p>
+
+      <div class="cards-grid">
+        <div class="card-item sensitive"><span class="emoji">🌍</span>Origine ethnique</div>
+        <div class="card-item sensitive"><span class="emoji">🗳️</span>Opinions politiques</div>
+        <div class="card-item sensitive"><span class="emoji">⛪</span>Religion</div>
+        <div class="card-item sensitive"><span class="emoji">❤️</span>Orientation sexuelle</div>
+        <div class="card-item sensitive"><span class="emoji">🏥</span>Données de santé</div>
+        <div class="card-item sensitive"><span class="emoji">🤝</span>Syndicat</div>
+      </div>
+
+      <div class="alert danger">
+        <div class="alert-icon">🚫</div>
+        <div><strong>Interdit !</strong> En règle générale, les entreprises <strong>n'ont pas le droit</strong> de collecter ces données. Exceptions très rares : avec ton consentement explicite, ou pour des raisons d'intérêt public.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3 ── -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EFF6FF;">🇪🇺</div>
+      <div class="section-title">
+        <h2>3. Le RGPD</h2>
+        <p>La loi européenne qui protège tes données</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="def-box blue">
+        <strong>RGPD</strong> = Règlement Général sur la Protection des Données<br>
+        C'est une <strong>loi européenne</strong> (2018) qui oblige toutes les entreprises à protéger tes données.
+      </div>
+
+      <p style="font-weight:800; margin-bottom:12px;">🏛️ Ce que les entreprises DOIVENT faire :</p>
+
+      <div class="pillars">
+        <div class="pillar p1">
+          <div class="big">🎯</div>
+          Collecter seulement les données <strong>nécessaires</strong>
+        </div>
+        <div class="pillar p2">
+          <div class="big">🔒</div>
+          <strong>Sécuriser</strong> les données collectées
+        </div>
+        <div class="pillar p3">
+          <div class="big">📢</div>
+          <strong>Informer</strong> les utilisateurs
+        </div>
+        <div class="pillar p4">
+          <div class="big">✅</div>
+          Respecter les <strong>droits</strong> des personnes
+        </div>
+      </div>
+
+      <div class="alert danger" style="margin-top:20px;">
+        <div class="alert-icon">💸</div>
+        <div><strong>Amendes énormes !</strong> Une entreprise qui ne respecte pas le RGPD peut payer jusqu'à <strong>20 millions d'euros</strong> ou 4 % de son chiffre d'affaires mondial. Ex : Amazon a eu une amende de 746 millions € en 2021.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4 ── -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-icon" style="background:#F0FDF4;">🏛️</div>
+      <div class="section-title">
+        <h2>4. La CNIL</h2>
+        <p>La police française des données personnelles</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="def-box blue">
+        <strong>CNIL</strong> = Commission Nationale de l'Informatique et des Libertés<br>
+        C'est l'organisme français <strong>indépendant</strong> qui surveille que les entreprises respectent tes droits.
+      </div>
+
+      <p style="font-weight:800; margin-bottom:12px;">🎯 Ses missions :</p>
+      <div class="missions">
+        <div class="mission m1"><span class="m-icon">🔍</span><span>Contrôler les entreprises</span></div>
+        <div class="mission m2"><span class="m-icon">🛡️</span><span>Protéger les citoyens</span></div>
+        <div class="mission m3"><span class="m-icon">⚖️</span><span>Sanctionner les abus</span></div>
+        <div class="mission m4"><span class="m-icon">📣</span><span>Informer le public</span></div>
+      </div>
+
+      <div class="alert warning" style="margin-top:18px;">
+        <div class="alert-icon">📞</div>
+        <div>Tu peux contacter la CNIL si une entreprise ne respecte pas tes droits : <strong>cnil.fr</strong> ou 01 53 73 22 22. C'est gratuit !</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5 ── -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-icon" style="background:#F5F3FF;">⚖️</div>
+      <div class="section-title">
+        <h2>5. Tes droits en tant que consommateur</h2>
+        <p>Tu as du pouvoir sur tes propres données !</p>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="droits-list">
+        <div class="droit-item">
+          <div class="droit-badge">👁️</div>
+          <div>
+            <span class="label">Droit d'accès</span>
+            <span class="sub">Demander à voir toutes les données qu'une entreprise a sur toi</span>
+          </div>
+        </div>
+        <div class="droit-item">
+          <div class="droit-badge">✏️</div>
+          <div>
+            <span class="label">Droit de rectification</span>
+            <span class="sub">Corriger une donnée incorrecte (ex : mauvaise adresse)</span>
+          </div>
+        </div>
+        <div class="droit-item">
+          <div class="droit-badge">🗑️</div>
+          <div>
+            <span class="label">Droit à l'effacement</span>
+            <span class="sub">Demander la suppression de tes données ("droit à l'oubli")</span>
+          </div>
+        </div>
+        <div class="droit-item">
+          <div class="droit-badge">🚫</div>
+          <div>
+            <span class="label">Droit d'opposition</span>
+            <span class="sub">Refuser que tes données soient utilisées (ex : pub ciblée)</span>
+          </div>
+        </div>
+        <div class="droit-item">
+          <div class="droit-badge">📦</div>
+          <div>
+            <span class="label">Droit à la portabilité</span>
+            <span class="sub">Récupérer tes données pour les transférer ailleurs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MÉMO FLASH ── -->
+  <div>
+    <p style="font-weight:900; font-size:16px; margin-bottom:14px; color:#1E1B4B;">⚡ Mémo flash — Les 4 mots-clés</p>
+    <div class="memo-box">
+      <div class="memo-item">
+        <div class="m-big">🪪</div>
+        <div class="m-title">Donnée perso</div>
+        <div class="m-desc">Info qui t'identifie</div>
+      </div>
+      <div class="memo-item">
+        <div class="m-big">🔴</div>
+        <div class="m-title">Donnée sensible</div>
+        <div class="m-desc">Vie privée = interdit</div>
+      </div>
+      <div class="memo-item">
+        <div class="m-big">🇪🇺</div>
+        <div class="m-title">RGPD</div>
+        <div class="m-desc">Loi européenne 2018</div>
+      </div>
+      <div class="memo-item">
+        <div class="m-big">🏛️</div>
+        <div class="m-title">CNIL</div>
+        <div class="m-desc">Gendarme français</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!--           ACTIVITÉS               -->
+  <!-- ══════════════════════════════════ -->
+  <div class="section" id="activites">
+    <div class="activities-header">
+      <div style="font-size:36px;">✏️</div>
+      <div>
+        <h2>Activités</h2>
+        <p>4 exercices pour vérifier que tu as tout compris</p>
+      </div>
+    </div>
+
+    <!-- ACTIVITÉ 1 -->
+    <div class="activity-block">
+      <div class="activity-num">📋 Activité 1</div>
+      <h3>Identifier les données personnelles</h3>
+      <p style="font-size:14px; margin-bottom:14px; color:#475569;">Classe chaque information dans la bonne colonne du tableau.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Information</th>
+            <th>Donnée personnelle 🔵</th>
+            <th>Donnée sensible 🔴</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Nom</td><td class="check-cell"></td><td></td></tr>
+          <tr><td>Adresse</td><td class="check-cell"></td><td></td></tr>
+          <tr><td>Religion</td><td></td><td class="check-cell"></td></tr>
+          <tr><td>Opinion politique</td><td></td><td class="check-cell"></td></tr>
+          <tr><td>Profession</td><td class="check-cell"></td><td></td></tr>
+          <tr><td>Date de naissance</td><td class="check-cell"></td><td></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px; color:#94A3B8; margin-top:10px; font-style:italic;">💡 Complète le tableau avec ✓ dans la bonne colonne</p>
+    </div>
+
+    <!-- ACTIVITÉ 2 -->
+    <div class="activity-block">
+      <div class="activity-num">🇪🇺 Activité 2</div>
+      <h3>Comprendre le RGPD</h3>
+      <div class="questions-list">
+        <div class="question-item">
+          <div class="q-num">1</div>
+          <div style="flex:1">
+            <p>Qu'est-ce que le RGPD ? (développe le sigle et explique en une phrase)</p>
+            <div class="answer-line"></div>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="q-num">2</div>
+          <div style="flex:1">
+            <p>Pourquoi les entreprises doivent-elles respecter le RGPD ? (pense aux conséquences si elles ne le font pas)</p>
+            <div class="answer-line"></div>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="q-num">3</div>
+          <div style="flex:1">
+            <p>Donne deux obligations que le RGPD impose aux entreprises.</p>
+            <div class="answer-line"></div>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVITÉ 3 -->
+    <div class="activity-block">
+      <div class="activity-num">⚖️ Activité 3</div>
+      <h3>Les droits du consommateur</h3>
+      <p style="font-size:14px; margin-bottom:14px; color:#475569;">Cite et explique <strong>3 droits</strong> que tu as sur tes données personnelles.</p>
+      <div class="questions-list">
+        <div class="question-item">
+          <div class="q-num">A</div>
+          <div style="flex:1">
+            <p>Droit n°1 :</p>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="q-num">B</div>
+          <div style="flex:1">
+            <p>Droit n°2 :</p>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="q-num">C</div>
+          <div style="flex:1">
+            <p>Droit n°3 :</p>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVITÉ 4 -->
+    <div class="activity-block">
+      <div class="activity-num">🛒 Activité 4 — Cas pratique</div>
+      <h3>Achat en ligne : normal ou pas ?</h3>
+
+      <div class="def-box blue" style="margin-bottom:18px;">
+        <strong>Situation :</strong> Ton voisin commande des baskets sur un site en ligne. Le site lui demande plusieurs informations avant de valider sa commande.
+      </div>
+
+      <p style="font-weight:800; font-size:14px; margin-bottom:12px;">Le site demande ces infos. Sont-elles justifiées ?</p>
+
+      <div class="cas-grid">
+        <div class="cas-item ok">
+          <span class="cas-icon">✅</span>
+          <span>Nom &amp; Prénom → <strong>Normal</strong></span>
+        </div>
+        <div class="cas-item ok">
+          <span class="cas-icon">✅</span>
+          <span>Adresse de livraison → <strong>Normal</strong></span>
+        </div>
+        <div class="cas-item ok">
+          <span class="cas-icon">✅</span>
+          <span>Carte bancaire → <strong>Normal</strong> (pour payer)</span>
+        </div>
+        <div class="cas-item nok">
+          <span class="cas-icon">🚫</span>
+          <span>Religion → <strong>INTERDIT !</strong> Donnée sensible</span>
+        </div>
+        <div class="cas-item ok">
+          <span class="cas-icon">✅</span>
+          <span>Numéro de téléphone → <strong>Normal</strong></span>
+        </div>
+      </div>
+
+      <div class="questions-list" style="margin-top:18px;">
+        <div class="question-item">
+          <div class="q-num">1</div>
+          <div style="flex:1">
+            <p>Quelle information le site n'avait-il <strong>pas le droit</strong> de demander ? Pourquoi ?</p>
+            <div class="answer-line"></div>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+        <div class="question-item">
+          <div class="q-num">2</div>
+          <div style="flex:1">
+            <p>Que peut faire ton voisin pour signaler ce problème ? Vers quel organisme peut-il se tourner ?</p>
+            <div class="answer-line"></div>
+            <div class="answer-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end activities section -->
+
+</div><!-- end container -->
+
+<div class="footer">
+  Éco-Droit · 1ère AGOrA · Lycée Comte de Foix — Andorre &nbsp;|&nbsp; Protection des données personnelles
+</div>
+
+</body>
+</html>
